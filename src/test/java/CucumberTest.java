@@ -8,20 +8,20 @@ public class CucumberTest {
     int currentAccount;
     int savingAccount;
 
-    @Given("I have 1000 on currentAccount")
-    public void setCurrentAccount(){
-        currentAccount = 1000;
+    @Given("I have {int} on currentAccount")
+    public void setCurrentAccount(int value){
+        currentAccount = value;
     }
 
-    @And("I have 1000 on savingAccount")
-    public void setSavingAccount(){
-        savingAccount = 1000;
+    @And("I have {int} on savingAccount")
+    public void setSavingAccount(int value){
+        savingAccount = value;
     }
 
-    @When("I transfer 500 from currentAccount to savingAccount")
-    public void transferMoney(){
-        currentAccount = currentAccount - 500;
-        savingAccount = savingAccount + 500;
+    @When("I transfer {int} from currentAccount to savingAccount")
+    public void transferMoney(int value){
+        currentAccount = currentAccount - value;
+        savingAccount = savingAccount + value;
         // te poniżej robią to samo:
         // currentAccount -= 500;
         // savingAccount += 500;
@@ -31,6 +31,11 @@ public class CucumberTest {
     public void showTransfer(){
         System.out.println("currentAccount: " + currentAccount);
         System.out.println("savingAccount: " + savingAccount);
+    }
+
+    @And("Statement appear {word}")
+    public void statement(String statement){
+        System.out.println(statement);
     }
 }
 
